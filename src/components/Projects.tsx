@@ -12,7 +12,7 @@ export default function Projects() {
       title: "RydZO",
       type: "Bike Rental Marketplace Platform",
       description: "A comprehensive rental marketplace platform built with the MERN stack. Features advanced JWT authentication, Role-Based Access Control (RBAC), and secure REST APIs. Integrated with Cloudinary for asset management and implements a complete end-to-end booking workflow.",
-      image: "/Screenshot 2026-05-28 155822.png",
+      image: "https://images.unsplash.com/photo-1630547752213-af38cfb722bd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzB8fGJpa2VzJTIwaGVsbWV0fGVufDB8fDB8fHww",
       features: ["JWT Authentication", "RBAC System", "Cloudinary Integration", "Booking Workflow", "Secure REST APIs", "Responsive UI"],
       links: {
         github: "https://github.com/Umesh042005/RydZO",

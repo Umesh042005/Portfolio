@@ -143,7 +143,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               View Projects
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <a href="https://drive.google.com/file/d/10_4loxPYqFDSW17xtM-wLBApyHGl89jl/view?usp=drive_link" target="_blank" className="px-8 py-4 glassmorphism text-slate-900 dark:text-white rounded-full font-medium hover:bg-slate-200/50 dark:hover:bg-zinc-800/50 transition-colors">
+            <a href="https://drive.google.com/file/d/1JrW5YPO1VyfIM8v4ZyDBGnuTeiIecVkA/view?usp=drive_link" target="_blank" className="px-8 py-4 glassmorphism text-slate-900 dark:text-white rounded-full font-medium hover:bg-slate-200/50 dark:hover:bg-zinc-800/50 transition-colors">
               Download Resume
             </a>
             <button
