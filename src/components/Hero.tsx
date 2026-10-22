@@ -2,18 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, Sparkles } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
-
-type SectionKey =
-  | "home"
-  | "about"
-  | "skills"
-  | "opensource"
-  | "projects"
-  | "codingprofiles"
-  | "certifications"
-  | "contact";
+import { profile, type SectionKey } from "@/data/portfolio";
+import { openAskAI } from "./AskAI";
 
 type HeroProps = {
   onNavigate: (section: SectionKey) => void;
@@ -89,7 +81,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-2xl md:text-3xl font-medium text-teal-600 dark:text-teal-400 mb-6"
           >
-            Full Stack Developer
+            Full Stack Engineer · <span className="text-teal-gradient font-semibold">AI-powered products</span>
           </motion.h2>
 
           <motion.div
@@ -98,15 +90,11 @@ export default function Hero({ onNavigate }: HeroProps) {
             transition={{ duration: 0.6, delay: 0.35 }}
             className="mb-8 flex flex-wrap items-center justify-center gap-3"
           >
-            <span className="px-4 py-1.5 rounded-full border border-slate-200/70 dark:border-white/10 bg-white/40 dark:bg-white/5 text-xs md:text-sm font-semibold text-slate-700 dark:text-slate-200 tracking-wide">
-              235+ LeetCode problems solved
-            </span>
-            <span className="px-4 py-1.5 rounded-full border border-slate-200/70 dark:border-white/10 bg-white/40 dark:bg-white/5 text-xs md:text-sm font-semibold text-slate-700 dark:text-slate-200 tracking-wide">
-              500+ total coding challenges
-            </span>
-            <span className="px-4 py-1.5 rounded-full border border-slate-200/70 dark:border-white/10 bg-white/40 dark:bg-white/5 text-xs md:text-sm font-semibold text-slate-700 dark:text-slate-200 tracking-wide">
-              Strong Java + DSA foundation
-            </span>
+            {["2 live apps · 50+ real users", "LLM tool calling + vision AI", "100+ automated tests", "235+ LeetCode"].map((badge) => (
+              <span key={badge} className="px-4 py-1.5 rounded-full border border-slate-200/70 dark:border-white/10 bg-white/40 dark:bg-white/5 text-xs md:text-sm font-semibold text-slate-700 dark:text-slate-200 tracking-wide">
+                {badge}
+              </span>
+            ))}
           </motion.div>
 
           <motion.div
@@ -116,7 +104,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             className="max-w-2xl mx-auto mb-6"
           >
             <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
-              Building scalable full stack applications with Java and MERN, backed by strong algorithmic thinking and consistent competitive programming practice.
+              I design, build and ship complete products: FastAPI and Spring Boot backends, React frontends, and AI features that do real work, from LLM agents that query live data to vision models that check documents and damage.
             </p>
           </motion.div>
 
@@ -126,7 +114,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-10"
           >
-            Open Source Contributor <span className="mx-2 text-teal-500">{"//"}</span> Backend Focused Engineer
+            Python · Java · TypeScript <span className="mx-2 text-teal-500">{"//"}</span> Open Source Contributor
           </motion.p>
 
           {/* CTA Buttons */}
@@ -143,15 +131,16 @@ export default function Hero({ onNavigate }: HeroProps) {
               View Projects
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <a href="https://drive.google.com/file/d/1JrW5YPO1VyfIM8v4ZyDBGnuTeiIecVkA/view?usp=drive_link" target="_blank" className="px-8 py-4 glassmorphism text-slate-900 dark:text-white rounded-full font-medium hover:bg-slate-200/50 dark:hover:bg-zinc-800/50 transition-colors">
-              Download Resume
-            </a>
             <button
-              onClick={() => onNavigate("contact")}
-              className="px-8 py-4 text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 font-medium transition-colors"
+              onClick={openAskAI}
+              className="group flex items-center gap-2 px-8 py-4 rounded-full font-medium border border-teal-500/40 bg-teal-500/10 text-teal-700 dark:text-teal-300 hover:bg-teal-500/20 transition-colors"
             >
-              Contact Me
+              <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+              Ask my AI about me
             </button>
+            <a href={profile.resume} target="_blank" rel="noreferrer" className="px-8 py-4 glassmorphism text-slate-900 dark:text-white rounded-full font-medium hover:bg-slate-200/50 dark:hover:bg-zinc-800/50 transition-colors">
+              Resume
+            </a>
           </motion.div>
           
           {/* Social Links under Hero */}
@@ -161,13 +150,13 @@ export default function Hero({ onNavigate }: HeroProps) {
              transition={{ duration: 0.8, delay: 0.8 }}
              className="mt-12 flex items-center gap-6"
           >
-            <a href="https://github.com/Umesh042005" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+            <a href={profile.github} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
               <FaGithub className="w-6 h-6" />
             </a>
-            <a href="https://www.linkedin.com/in/umesh-deshmukh2005/" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
               <FaLinkedin className="w-6 h-6" />
             </a>
-            <a href="mailto:umesh@example.com" className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+            <a href={`mailto:${profile.email}`} aria-label="Email" className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
               <Mail className="w-6 h-6" />
             </a>
           </motion.div>

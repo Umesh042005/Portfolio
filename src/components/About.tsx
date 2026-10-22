@@ -8,18 +8,18 @@ export default function About() {
   const cards = [
     {
       icon: <Code2 className="w-8 h-8 text-teal-500" />,
-      title: "Full Stack Development",
-      description: "Building end-to-end applications with modern technologies like React, Next.js, and Java Spring Boot.",
+      title: "End-to-end Ownership",
+      description: "Design, backend, frontend, testing and deployment, done solo, for products real people use.",
     },
     {
       icon: <Database className="w-8 h-8 text-teal-500" />,
-      title: "Scalable Backend Systems",
-      description: "Designing robust APIs and microservices handling complex business logic and database management.",
+      title: "Backend that Enforces Rules",
+      description: "FastAPI and Spring Boot APIs where business rules, privacy and timing live on the server, backed by automated tests.",
     },
     {
       icon: <Brain className="w-8 h-8 text-teal-500" />,
-      title: "AI Workflows & RAG",
-      description: "Integrating AI models, designing prompt pipelines, and building Retrieval-Augmented Generation systems.",
+      title: "AI that Does Real Work",
+      description: "LLM agents with tool calling, vision models for document and damage checks, and assistants scoped to what each user may see.",
     },
     {
       icon: <Rocket className="w-8 h-8 text-teal-500" />,
@@ -33,7 +33,7 @@ export default function About() {
       <div className="container mx-auto px-6">
         <SectionHeading 
           title="About Me" 
-          subtitle="A passionate engineer focused on building impactful software solutions." 
+          subtitle="I build things people use, and I use AI to build them better." 
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16">
@@ -45,16 +45,16 @@ export default function About() {
             className="space-y-6 text-lg text-slate-600 dark:text-slate-300"
           >
             <p>
-              I am a <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Developer</strong> with a strong foundation in building scalable applications. I enjoy working across the entire stack, from crafting beautiful user interfaces with React and Next.js to designing resilient backend architectures with Java, Spring Boot, and Node.js.
+              I&apos;m a <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Engineer</strong> who ships complete products, not just features. I&apos;ve built and deployed platforms that real people use: an exam-prep app serving 50+ learners, a coaching platform for a real organisation, and an AI-powered bike rental marketplace.
             </p>
             <p>
-              Alongside development, I have built a strong <strong className="text-slate-900 dark:text-white font-semibold">problem-solving mindset through DSA and Competitive Programming</strong>. Solving 500+ coding challenges across platforms, including 235+ on LeetCode, has sharpened my approach to writing efficient, optimized, and production-ready code.
+              I work across <strong className="text-slate-900 dark:text-white font-semibold">Python/FastAPI, Java/Spring Boot and Node/Express</strong> on the backend and React on the frontend, and I care about the unglamorous parts too: server-enforced rules, migrations, load tests and 100+ automated tests across my projects.
             </p>
             <p>
-              My focus extends beyond traditional web development. I am deeply interested in <strong className="text-teal-600 dark:text-teal-400 font-semibold">AI Workflows and Retrieval-Augmented Generation (RAG)</strong>, continuously exploring how to integrate modern AI capabilities into real-world systems.
+              In the AI era, I treat <strong className="text-teal-600 dark:text-teal-400 font-semibold">LLMs as a building block</strong>: agents that call tools against live data, vision models that verify documents and detect damage, and assistants that respect privacy boundaries. I also build with AI coding tools daily to ship faster without lowering the bar.
             </p>
             <p>
-              With a passion for <strong className="text-slate-900 dark:text-white font-semibold">open-source contribution</strong>, I actively collaborate on projects like OWASP Dependency-Check and FlowiseAI, pushing boundaries and solving complex engineering challenges.
+              My foundation is <strong className="text-slate-900 dark:text-white font-semibold">DSA and problem solving</strong> (500+ challenges, 235+ on LeetCode), and I contribute to open source projects like OWASP Dependency-Check and FlowiseAI.
             </p>
           </motion.div>
 

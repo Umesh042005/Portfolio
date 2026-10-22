@@ -32,7 +32,7 @@ export default function CodingProfiles() {
   ];
 
   return (
-    <section className="py-24 relative bg-slate-50 dark:bg-zinc-950">
+    <section id="codingprofiles" className="py-24 relative bg-slate-50 dark:bg-zinc-950">
       <div className="container mx-auto px-6">
         <SectionHeading 
           title="Coding Profiles" 

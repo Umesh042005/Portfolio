@@ -13,8 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Umesh Deshmukh | Full Stack Developer",
-  description: "Portfolio of Umesh Deshmukh, a Full Stack Developer specializing in Java, MERN stack, and AI workflows.",
+  title: "Umesh Deshmukh | Full Stack Engineer · AI-powered Products",
+  description: "Umesh Deshmukh builds and ships full stack products with real AI features: LLM tool calling, vision models and privacy-scoped assistants. Python/FastAPI, Java/Spring Boot, React.",
+  openGraph: {
+    title: "Umesh Deshmukh | Full Stack Engineer · AI-powered Products",
+    description: "Shipped products with real users and AI that does real work. Ask the portfolio's AI assistant anything.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
