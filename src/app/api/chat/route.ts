@@ -177,6 +177,8 @@ export async function POST(req: Request) {
   if (!question) return NextResponse.json({ error: "No question" }, { status: 400 });
 
   const apiKey = process.env.AI_API_KEY ?? process.env.OLLAMA_API_KEY;
+  // Why the LLM was skipped, returned for debugging deploys (never contains secrets).
+  let reason = apiKey ? "llm-empty" : "no-key";
   if (apiKey) {
     try {
       const res = await fetch(process.env.AI_API_URL ?? "https://ollama.com/api/chat", {
@@ -197,12 +199,14 @@ export async function POST(req: Request) {
         const answer: string | undefined = data?.message?.content?.replace(/\*\*|__/g, "").trim();
         if (answer) return NextResponse.json({ answer, mode: "llm" });
       } else {
+        reason = `llm-http-${res.status}`;
         console.error("LLM error", res.status, await res.text());
       }
     } catch (err) {
+      reason = err instanceof Error && err.name === "TimeoutError" ? "llm-timeout" : "llm-network";
       console.error("LLM request failed", err);
     }
   }
 
-  return NextResponse.json({ answer: fallbackAnswer(question), mode: "retrieval" });
+  return NextResponse.json({ answer: fallbackAnswer(question), mode: "retrieval", reason });
 }
