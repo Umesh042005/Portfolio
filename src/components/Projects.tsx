@@ -7,13 +7,38 @@ import { FaGithub } from "react-icons/fa6";
 import Image from "next/image";
 
 export default function Projects() {
-  const projects = [
+  const projects: {
+    title: string;
+    type: string;
+    description: string;
+    image: string;
+    features: string[];
+    links: { github?: string; demo?: string; video?: string };
+  }[] = [
+    {
+      title: "MP Police Prep 2026",
+      type: "Exam Practice Platform · Solo Full Stack",
+      description: "A free, Hindi-first, mobile-first web app that helps students prepare for the MP Police Constable (GD) exam, used by 50+ learners within weeks of launch. Offers full mock tests on the real exam pattern with a server-side timer and auto-submit, 200+ official MPESB previous year questions, topic-wise practice, daily challenges and weak-topic reports. Exam rules are enforced in code, backed by 70+ automated tests, and the whole stack runs at ₹0/month on free tiers.",
+      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1970&auto=format&fit=crop",
+      features: ["React 19 + Vite", "FastAPI (async)", "PostgreSQL + Alembic", "Server-side Timer", "Admin Panel", "Installable PWA", "70+ Tests"],
+      links: {
+        demo: "https://mp-police-prep.vercel.app"
+      }
+    },
+    {
+      title: "Ekagra",
+      type: "Meditation, Mentorship & Dance Learning Platform · Solo Full Stack",
+      description: "A calm, distraction-free web app built for a real coaching organisation, replacing WhatsApp groups with one place for schedules, Zoom links, reminders and attendance. Role-based dashboards for students, mentors, a dance teacher and an admin; group and 1:1 scheduling with repeating series, mentor rotation and conflict detection that skips only clashing dates; and an AI assistant that answers schedule questions using only the data each user is allowed to see. Privacy is enforced in the API and covered by 35 automated tests.",
+      image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1970&auto=format&fit=crop",
+      features: ["React + Vite", "FastAPI + Pydantic", "Supabase (Postgres + Auth)", "Role-based Dashboards", "Conflict Detection", "AI Assistant (Ollama)", "35 Tests"],
+      links: {}
+    },
     {
       title: "RydZO",
-      type: "Bike Rental Marketplace Platform",
-      description: "A comprehensive rental marketplace platform built with the MERN stack. Features advanced JWT authentication, Role-Based Access Control (RBAC), and secure REST APIs. Integrated with Cloudinary for asset management and implements a complete end-to-end booking workflow.",
+      type: "AI-powered Peer-to-Peer Bike Rental Platform",
+      description: "A full-stack marketplace where bike owners rent out their two-wheelers to verified riders. Riders sign up with Google, upload their licence and ID at their first booking, accept a digital rental agreement, and the owner hands over the bike only after admin approval. AI helps at every step: writing listings and suggesting prices, a chat assistant that searches live listings via tool calling, reading KYC documents to flag mismatches, and comparing return photos to detect damage and estimate repair cost.",
       image: "https://images.unsplash.com/photo-1630547752213-af38cfb722bd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzB8fGJpa2VzJTIwaGVsbWV0fGVufDB8fDB8fHww",
-      features: ["JWT Authentication", "RBAC System", "Cloudinary Integration", "Booking Workflow", "Secure REST APIs", "Responsive UI"],
+      features: ["MERN Stack", "JWT + Google OAuth", "RBAC (Rider/Owner/Admin)", "KYC Approval Workflow", "AI Damage & Document Checks", "Ollama Cloud LLMs", "Maps & Analytics"],
       links: {
         github: "https://github.com/Umesh042005/RydZO",
         demo: "https://rydzo.vercel.app/",
@@ -92,9 +117,11 @@ export default function Projects() {
                 </div>
 
                 <div className="flex items-center gap-4 pt-4">
-                  <a href={project.links.github} className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-medium hover:scale-105 transition-transform">
-                    <FaGithub className="w-4 h-4" /> GitHub
-                  </a>
+                  {project.links.github && (
+                    <a href={project.links.github} className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-medium hover:scale-105 transition-transform">
+                      <FaGithub className="w-4 h-4" /> GitHub
+                    </a>
+                  )}
                   {project.links.demo && (
                     <a href={project.links.demo} className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-200 dark:border-zinc-700 text-slate-700 dark:text-slate-200 font-medium hover:bg-slate-50 dark:hover:bg-zinc-800 transition-colors">
                       <ExternalLink className="w-4 h-4" /> Live Demo
