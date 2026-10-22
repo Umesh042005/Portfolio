@@ -9,8 +9,8 @@ type Message = { role: "user" | "assistant"; content: string };
 const SUGGESTIONS = [
   "What AI features has Umesh built?",
   "Which project shows backend depth?",
-  "Has Umesh worked with FastAPI?",
   "Why should we hire Umesh?",
+  "Tell me about Umesh in 30 seconds",
 ];
 
 export function openAskAI() {

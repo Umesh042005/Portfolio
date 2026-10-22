@@ -27,8 +27,21 @@ export const profile = {
   email: "umeshdeshmukh926@gmail.com",
   github: "https://github.com/Umesh042005",
   linkedin: "https://www.linkedin.com/in/umesh-deshmukh2005/",
-  resume: "https://drive.google.com/file/d/10_4loxPYqFDSW17xtM-wLBApyHGl89jl/view?usp=drive_link",
+  resume: "https://drive.google.com/file/d/1nSFh-bJI2wBIQD_XQSJ1umHsBbJiPdfl/view?usp=sharing",
   leetcode: "https://leetcode.com/u/umeshdeshmukh926/",
+  location: "Bengaluru, Karnataka, India",
+};
+
+/** Facts recruiters screen for. Only add what's true; the AI assistant must not guess the rest. */
+export const hrFacts = {
+  education: "B.Tech in Computer Science and Engineering, Technocrats Institute of Technology and Science, Bhopal (2022–2026), CGPA 7.72",
+  status: "2026 graduate, open to full-time Software Engineer / Full Stack / AI Engineer roles",
+  experience: [
+    "TechSaksham AI/ML Virtual Internship, Microsoft & SAP (Nov 2024 – Jan 2025, remote): built a human pose estimation system with Python, TensorFlow, OpenPose and CNNs detecting 15+ body keypoints from images and real-time video at 25 FPS; improved robustness under occlusion and poor lighting, reducing keypoint error rate by 18% through model tuning and preprocessing.",
+    "OWASP Dependency-Check open source contributions (PR #8218, PR #8200): fixed incorrect CPE mappings for Zabbix and Solace, removing 2 false-positive CVE flags, and added a detection hint for the Elastic APM Java Agent.",
+  ],
+  workStyle: "Owns products end to end and ships them solo: design, backend, frontend, tests and deployment. Comfortable with Agile/Scrum and open-source collaboration.",
+  // Not stated anywhere: salary expectations, notice period, relocation preference. The assistant must redirect these to email.
 };
 
 export type Project = {
@@ -89,11 +102,13 @@ export const projects: Project[] = [
     description:
       "A full-stack marketplace where bike owners rent out their two-wheelers to verified riders. Riders sign up with Google, upload their licence and ID at their first booking, accept a digital rental agreement, and the owner hands over the bike only after admin approval. AI helps at every step: writing listings and suggesting prices, a chat assistant that searches live listings via tool calling, reading KYC documents to flag mismatches, and comparing return photos to detect damage and estimate repair cost.",
     image: "/projects/rydzo.png",
-    features: ["MERN Stack", "JWT + Google OAuth", "RBAC (Rider/Owner/Admin)", "KYC Approval Workflow", "Ollama Cloud LLMs", "Maps & Analytics"],
+    features: ["MERN Stack", "JWT + Google OAuth", "RBAC (Rider/Owner/Admin)", "LangChain · LangGraph", "RAG + ChromaDB", "Vision LLM", "Maps & Analytics"],
     architecture: ["React", "Express API", "MongoDB", "LLMs (gpt-oss, Gemma vision)"],
     impact: ["4 AI features", "3 user roles", "Live"],
     highlights: [
-      "Chat assistant uses LLM tool calling to query live bike listings instead of guessing",
+      "8-stage automated booking engine with 3-tier role-based access (Rider, Owner, Admin)",
+      "LangGraph multi-step KYC pipeline: document extraction, cross-verification and risk scoring across 5+ ID types",
+      "RAG chatbot (LangChain + ChromaDB) and LLM tool calling to query live bike listings instead of guessing",
       "Vision model compares before/after photos to flag damage and estimate repair cost",
       "Document AI reads RC, insurance, PUC and licence and flags mismatches for the admin",
     ],
@@ -108,13 +123,14 @@ export const projects: Project[] = [
     title: "MyNewHome",
     type: "Property Selling Platform",
     description:
-      "A full-stack property selling platform with a Spring Boot backend and React frontend. Implements JWT authentication, role-based access, and property listings with search and filtering.",
+      "A secure full-stack property selling platform with a Spring Boot backend and React frontend for managing and browsing 100+ property listings. A dedicated Spring Boot service calls the Google Gemini API to generate property descriptions from listing data, and Spring Security with JWT protects every REST endpoint.",
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop",
-    features: ["Spring Boot", "JWT Authentication", "Role-based Access", "Search & Filtering", "React Frontend"],
-    architecture: ["React", "Spring Boot", "MySQL"],
+    features: ["Spring Boot", "Spring Security + JWT", "JPA", "Google Gemini API", "React + Tailwind", "MySQL"],
+    architecture: ["React", "Spring Boot", "MySQL", "Gemini API"],
     highlights: [
-      "Layered Spring Boot architecture with JWT-secured REST endpoints",
-      "Role-based access separating buyers, sellers and admins",
+      "20+ REST APIs in a layered Spring Boot architecture, all secured with Spring Security and JWT",
+      "Separate Spring Boot service integrates Google Gemini to write property descriptions automatically",
+      "Search and filtering across 100+ listings",
     ],
     links: {
       github: "https://github.com/Umesh042005/PropertySellingWebsite-MyNewHome",
@@ -126,7 +142,7 @@ export const projects: Project[] = [
 export const skillCategories: { title: string; skills: string[] }[] = [
   {
     title: "AI Engineering",
-    skills: ["LLM Integration", "Tool / Function Calling", "Vision Models", "RAG Pipelines", "Prompt Design", "Privacy-scoped AI", "Ollama Cloud", "FlowiseAI"],
+    skills: ["LangChain", "LangGraph", "RAG + ChromaDB", "Vector Embeddings", "Tool / Function Calling", "Vision LLMs", "Computer Vision", "Gemini · OpenAI · Ollama APIs", "TensorFlow"],
   },
   {
     title: "Backend",
@@ -142,7 +158,7 @@ export const skillCategories: { title: string; skills: string[] }[] = [
   },
   {
     title: "Testing & Quality",
-    skills: ["pytest", "Vitest", "unittest", "Locust (load testing)", "Postman"],
+    skills: ["pytest", "Vitest", "JUnit", "unittest", "Locust (load testing)", "Postman", "Agile / Scrum"],
   },
   {
     title: "Cloud & Tools",
@@ -162,14 +178,23 @@ export function buildKnowledgeBase(): string {
     )
     .join("\n\n");
 
-  return `ABOUT: ${profile.name} is a ${profile.role}. Umesh works across the stack with Python/FastAPI, Java/Spring Boot and Node/Express on the backend and React/Next.js on the frontend, and ships products with real AI features (LLM tool calling, vision models, privacy-scoped assistants). Solved 235+ LeetCode problems and 500+ coding challenges overall. Contact: ${profile.email}, GitHub ${profile.github}, LinkedIn ${profile.linkedin}.
+  return `ABOUT: ${profile.name} is a ${profile.role}, based in ${profile.location}. Umesh works across the stack with Python/FastAPI, Java/Spring Boot and Node/Express on the backend and React/Next.js on the frontend, and ships products with real AI features (LLM tool calling, vision models, privacy-scoped assistants). Solved 235+ LeetCode problems and 500+ coding challenges overall. Contact: ${profile.email}, GitHub ${profile.github}, LinkedIn ${profile.linkedin}.
 
 SKILLS:
 ${skillCategories.map((c) => `${c.title}: ${c.skills.join(", ")}`).join("\n")}
 
 ${projectText}
 
-OPEN SOURCE: Contributions to OWASP Dependency-Check (vulnerability detection) and FlowiseAI (node integrations for RAG pipelines).
+EDUCATION: ${hrFacts.education}
+STATUS: ${hrFacts.status}
+WORK STYLE: ${hrFacts.workStyle}
+
+EXPERIENCE:
+- ${hrFacts.experience.join("\n- ")}
+
+OPEN SOURCE: OWASP Dependency-Check (PR #8218, #8200: CPE mapping fixes and a new detection hint) and FlowiseAI (node integrations for RAG pipelines).
+
+NOT PROVIDED (never guess; ask the recruiter to email): salary expectations, notice period, relocation preference, phone number.
 
 CERTIFICATIONS: ServiceNow Certified System Administrator; Microsoft Azure Fundamentals (AZ-900); Microsoft & SAP TechSaksham internship (AI fundamentals); Wipro TalentNext Java Full Stack; AWS Academy Cloud Foundations.`;
 }
