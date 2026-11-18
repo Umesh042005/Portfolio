@@ -9,18 +9,19 @@ export default function OpenSource() {
   const contributions = [
     {
       project: "OWASP Dependency-Check",
-      description: "Contributed to the core engine, improving vulnerability detection and reducing false positives in enterprise environments.",
+      description: "3 merged PRs: fixed incorrect CPE mappings for Zabbix and Solace (removing false-positive CVE flags), added a detection hint for the Elastic APM Java Agent, and migrated a deprecated build plugin.",
       status: "merged",
-      stars: "4.5k",
-      type: "Feature Implementation",
-      link: "https://github.com/pulls?q=is%3Apr+author%3AUmesh042005+archived%3Afalse+is%3Aclosed"
+      stars: "7.7k",
+      type: "Security · False-positive fixes",
+      link: "https://github.com/dependency-check/DependencyCheck/pulls?q=is%3Apr+author%3AUmesh042005+is%3Amerged"
     },
     {
       project: "FlowiseAI",
-      description: "Added new node integrations for RAG pipelines, enhancing the drag-and-drop LLM builder capabilities.",
-      status: "merged",
-      stars: "22k",
-      type: "Integration",
+      description: "Open PR adding null checks to document store component nodes, so RAG flows fail cleanly instead of crashing on missing data.",
+      status: "open",
+      stars: "55k",
+      type: "Bug fix",
+      link: "https://github.com/FlowiseAI/Flowise/pull/6406"
     }
 
   ];
@@ -68,7 +69,13 @@ export default function OpenSource() {
                   <div className="flex-grow">
                     <div className="flex flex-wrap items-center justify-between gap-4 mb-2">
                       <h4 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
-                        {item.project}
+                        {item.link ? (
+                          <a href={item.link} target="_blank" rel="noreferrer" className="hover:underline">
+                            {item.project}
+                          </a>
+                        ) : (
+                          item.project
+                        )}
                       </h4>
                       <div className="flex items-center gap-4 text-sm font-medium">
                         <span className="flex items-center gap-1 text-slate-500">

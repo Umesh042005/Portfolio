@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { buildKnowledgeBase, hrFacts, profile, projects, skillCategories } from "@/data/portfolio";
+import { buildKnowledgeBase, experience, hrFacts, profile, projects, skillCategories } from "@/data/portfolio";
 
 // The 120b model can take 15s+; give the Vercel function room beyond the default limit.
 export const maxDuration = 60;
@@ -22,7 +22,7 @@ How to answer:
 
 Accuracy (most important — a recruiter may verify every claim):
 - Every number, percentage, user count and technology you mention must appear word-for-word in the KNOWLEDGE. Do not estimate, round up or add new metrics.
-- Do not add details that aren't stated (e.g. don't call the internship team-based, don't call MP Police Prep AI-powered, only 2 apps have public live links).
+- Do not add details that aren't stated (e.g. don't call the internship team-based, don't call MP Police Prep AI-powered, only 2 apps have public live links). The startup is in stealth mode: never guess its name, founders, funding or team size.
 - Speak ABOUT Umesh in the third person ("Umesh built…"). You are not Umesh; never write "I built" or "my project". Never use "he" or "she".
 
 Format:
@@ -67,7 +67,8 @@ function fallbackAnswer(question: string): string {
   if (has(q, "yourself", "introduce", "who is", "about umesh", "intro", "apne baare")) {
     return `Umesh is a ${profile.role}, based in ${profile.location}.
 - ${hrFacts.education}
-- Shipped MP Police Prep (50+ learners), Ekagra (for a real coaching organisation) and RydZO (LangChain/LangGraph, vision LLM)
+- Full Stack AI Engineer at a stealth-mode AI startup since January 2026, working on Ekagra, Waiter AI and Eigen
+- Shipped MP Police Prep (50+ learners) and RydZO (LangChain/LangGraph, vision LLM) as personal projects
 - AI/ML internship with Microsoft & SAP and merged OWASP Dependency-Check PRs
 - ${hrFacts.status}`;
   }
@@ -81,11 +82,11 @@ function fallbackAnswer(question: string): string {
   }
 
   if (has(q, "intern", "experience", "worked at", "job")) {
-    return `Experience:\n- ${hrFacts.experience.join("\n- ")}\n\nPlus three shipped products built solo end to end. Ask about any project for details.`;
+    return `Experience:\n${experience.map((r) => `- ${r.title}, ${r.company} (${r.period}): ${r.work.map((w) => w.name).join(", ")}`).join("\n")}\n\nAsk about any of these products or projects for details.`;
   }
 
   if (has(q, "weakness", "improve", "kami")) {
-    return `Honest answer: Umesh has less experience working inside a large engineering team so far, since most projects were built solo. Umesh is closing that gap through open-source contributions (merged OWASP Dependency-Check PRs) and the Microsoft & SAP internship, and by writing tests and documentation the way a team would expect.`;
+    return `Honest answer: Umesh has less experience working inside a large engineering team so far; current work is with a small startup team and personal projects are built solo. Umesh is closing that gap through open-source contributions (merged OWASP Dependency-Check PRs) and the Microsoft & SAP internship, and by writing tests and documentation the way a team would expect.`;
   }
 
   if (has(q, "location", "where", "based", "city")) {
@@ -103,14 +104,13 @@ function fallbackAnswer(question: string): string {
   if (has(q, " ai", "ai ", "llm", "gpt", "machine learning", "ml ", "agent", "vision", "rag", "genai", "chatbot")) {
     return `Umesh ships AI features in real products:
 - RydZO: chat assistant that searches live listings via LLM tool calling, vision model that compares before/after photos for damage, document AI that reads RC/insurance/licence and flags mismatches, AI listing writer and price suggestions
-- Ekagra: assistant that answers schedule questions using only the data each user is allowed to see (privacy enforced in the API)
-- Open source: RAG pipeline node integrations for FlowiseAI
+- Startup work: Ekagra assistant that only sees data each user is allowed to see, a LangGraph multi-agent ordering assistant (Waiter AI), and an Ollama question-generation pipeline with human review (Eigen)
 - This chat itself is grounded on the portfolio data`;
   }
 
   if (has(q, "hire", "why should", "strength", "stand out", "kyu", "kyon", "best")) {
     return `Short version:
-- Ships complete products solo: design, backend, frontend, tests, deployment
+- Ships backend and LLM features at a stealth AI startup, plus complete solo products: design, backend, frontend, tests, deployment
 - Real users: MP Police Prep reached 50+ learners within weeks
 - Puts rules on the server (exam timer, publishing rules, privacy) and backs them with 100+ automated tests
 - Uses AI where it does real work: tool calling, vision, privacy-scoped assistants
@@ -120,12 +120,12 @@ function fallbackAnswer(question: string): string {
   if (has(q, "backend", "api", "server", "database", "system design", "scal")) {
     return `Best backend examples:
 - MP Police Prep: async FastAPI + SQLAlchemy 2 + PostgreSQL with Alembic migrations, server-side exam timer with auto-submit, publishing blocked unless a mock matches the official 40/30/30 split, Locust load tests, 70+ tests
-- Ekagra: scheduling engine with per-date conflict detection, mentor rotation, rolling 2-week booking window, role-scoped access, 35 tests
+- Ekagra (startup work): FastAPI backend with 35+ REST APIs, scheduling and recurring series, role-scoped access, 35 tests
 - RydZO: Express + MongoDB with JWT/Google OAuth, RBAC and a KYC approval workflow`;
   }
 
   if (has(q, "test", "quality", "pytest")) {
-    return `Testing is part of every project: 70+ tests on MP Police Prep (pytest, Vitest, Locust load tests, incl. scoring and timer-expiry cases) and 35 tests on Ekagra (scheduling, mentor rotation, weekday series, chatbot privacy).`;
+    return `Testing is part of every project: 70+ tests on MP Police Prep (pytest, Vitest, Locust load tests, incl. scoring and timer-expiry cases) and 35 tests on Ekagra at the startup (session system and chatbot privacy).`;
   }
 
   if (has(q, "contact", "email", "reach", "linkedin", "resume", "cv")) {

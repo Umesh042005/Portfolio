@@ -4,6 +4,7 @@
 export type SectionKey =
   | "home"
   | "about"
+  | "experience"
   | "skills"
   | "projects"
   | "opensource"
@@ -13,6 +14,7 @@ export type SectionKey =
 
 export const sections: { key: SectionKey; name: string }[] = [
   { key: "about", name: "About" },
+  { key: "experience", name: "Experience" },
   { key: "skills", name: "Skills" },
   { key: "projects", name: "Projects" },
   { key: "opensource", name: "Open Source" },
@@ -23,7 +25,7 @@ export const sections: { key: SectionKey; name: string }[] = [
 
 export const profile = {
   name: "Umesh Deshmukh",
-  role: "Full Stack Engineer building AI-powered products",
+  role: "Full Stack AI Engineer building AI-powered products",
   email: "umeshdeshmukh926@gmail.com",
   github: "https://github.com/Umesh042005",
   linkedin: "https://www.linkedin.com/in/umesh-deshmukh2005/",
@@ -36,13 +38,74 @@ export const profile = {
 export const hrFacts = {
   education: "B.Tech in Computer Science and Engineering, Technocrats Institute of Technology and Science, Bhopal (2022–2026), CGPA 7.72",
   status: "2026 graduate, open to full-time Software Engineer / Full Stack / AI Engineer roles",
-  experience: [
-    "TechSaksham AI/ML Virtual Internship, Microsoft & SAP (Nov 2024 – Jan 2025, remote): built a human pose estimation system with Python, TensorFlow, OpenPose and CNNs detecting 15+ body keypoints from images and real-time video at 25 FPS; improved robustness under occlusion and poor lighting, reducing keypoint error rate by 18% through model tuning and preprocessing.",
-    "OWASP Dependency-Check open source contributions (PR #8218, PR #8200): fixed incorrect CPE mappings for Zabbix and Solace, removing 2 false-positive CVE flags, and added a detection hint for the Elastic APM Java Agent.",
-  ],
-  workStyle: "Owns products end to end and ships them solo: design, backend, frontend, tests and deployment. Comfortable with Agile/Scrum and open-source collaboration.",
+  workStyle: "Owns features end to end: design, backend, frontend, tests and deployment. Works remotely with a small startup team and ships side projects solo. Comfortable with Agile/Scrum and open-source collaboration.",
   // Not stated anywhere: salary expectations, notice period, relocation preference. The assistant must redirect these to email.
 };
+
+export type Role = {
+  title: string;
+  company: string;
+  location: string;
+  period: string;
+  summary?: string;
+  /** Each product or piece of work done in this role. */
+  work: { name: string; tagline: string; stack: string[]; points: string[]; link?: { label: string; href: string } }[];
+};
+
+/** Work experience, newest first. Wording mirrors the resume; no public links for professional work. */
+export const experience: Role[] = [
+  {
+    title: "Full Stack AI Engineer",
+    company: "Stealth-mode AI Startup",
+    location: "Remote",
+    period: "January 2026 – Present",
+    work: [
+      {
+        name: "Ekagra",
+        tagline: "Meditation & Mentorship Platform",
+        stack: ["Python", "FastAPI", "Supabase (PostgreSQL)", "React.js", "LLM API"],
+        points: [
+          "Developed the platform end to end: a React.js frontend and a FastAPI backend with 35+ REST APIs for student, mentor, and admin roles covering scheduling, recurring series, group classes, and attendance on Supabase (PostgreSQL).",
+          "Implemented an LLM chatbot whose backend assembles role-scoped context from the user's token, so each user can only query permitted data, preventing prompt-injection leaks; introduced per-user rate limiting and 35 automated tests.",
+        ],
+      },
+      {
+        name: "Waiter AI",
+        tagline: "Restaurant Ordering Assistant",
+        stack: ["Python", "FastAPI", "LangGraph", "LangChain", "Milvus"],
+        points: [
+          "Contributed to a LangGraph multi-agent ordering assistant (intent detection, FAQ, menu retrieval over Milvus vector search, guardrails) served through FastAPI.",
+          "Replaced a hard-coded Hugging Face endpoint with an env-configured OpenAI-compatible LLM provider layer, letting the team switch between Ollama Cloud, Groq, OpenAI, and Gemini with no code changes.",
+        ],
+      },
+      {
+        name: "Eigen",
+        tagline: "Competitive Problem-Solving App (Play Store)",
+        stack: ["Python", "FastAPI", "Ollama", "Supabase"],
+        points: [
+          "Engineered an LLM question-generation pipeline on Ollama that produces new problems modelled on existing database questions by topic and difficulty, then runs format validation and a re-solve answer check before saving drafts.",
+          "Exposed admin-only FastAPI endpoints with background jobs for generation, editing, and an approve/reject human-review workflow before questions are published to users.",
+        ],
+      },
+    ],
+  },
+  {
+    title: "AI/ML Virtual Intern",
+    company: "TechSaksham (Microsoft & SAP CSR Initiative)",
+    location: "Remote",
+    period: "Nov 2024 – Jan 2025",
+    work: [
+      {
+        name: "Human Pose Estimation",
+        tagline: "Computer Vision",
+        stack: ["Python", "TensorFlow", "OpenPose", "CNNs"],
+        points: [
+          "Created a human pose estimation system with Python, TensorFlow, OpenPose, and CNNs detecting 15+ body keypoints from real-time video at 25 FPS; reduced keypoint error rate by 18% through model tuning and preprocessing.",
+        ],
+      },
+    ],
+  },
+];
 
 export type Project = {
   slug: string;
@@ -61,40 +124,6 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-  {
-    slug: "mp-police-prep",
-    title: "MP Police Prep 2026",
-    type: "Exam Practice Platform · Solo Full Stack",
-    description:
-      "A free, Hindi-first, mobile-first web app that helps students prepare for the MP Police Constable (GD) exam, used by 50+ learners within weeks of launch. Full mock tests on the real exam pattern with a server-side timer and auto-submit, 200+ official MPESB previous year questions, topic-wise practice, daily challenges and weak-topic reports, plus an admin panel for bulk question import and mock-test building.",
-    image: "/projects/mp-police-prep.png",
-    features: ["React 19 + Vite", "FastAPI (async)", "SQLAlchemy 2", "PostgreSQL + Alembic", "Installable PWA", "pytest · Vitest · Locust"],
-    architecture: ["React PWA", "FastAPI", "PostgreSQL", "Vercel · Render · Supabase"],
-    impact: ["50+ learners", "200+ PYQs", "70+ tests", "₹0/month"],
-    highlights: [
-      "Exam rules enforced in code: a mock can't be published unless it matches the official 40/30/30 section split",
-      "120-minute timer runs on the server, so refreshing or tampering can't buy extra time; tests auto-submit on expiry",
-      "Load-tested with Locust and deployed end-to-end on free tiers",
-    ],
-    links: { demo: "https://mp-police-prep.vercel.app" },
-  },
-  {
-    slug: "ekagra",
-    title: "Ekagra",
-    type: "Meditation, Mentorship & Dance Learning Platform · Solo Full Stack",
-    description:
-      "A calm, distraction-free web app built for a real coaching organisation, replacing WhatsApp groups with one place for schedules, Zoom links, reminders and attendance. Role-based dashboards for students, mentors, a dance teacher and an admin; group and 1:1 scheduling with repeating series and mentor rotation; and an AI assistant that answers schedule questions using only the data each user is allowed to see.",
-    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1970&auto=format&fit=crop",
-    features: ["React + Vite", "FastAPI + Pydantic", "Supabase (Postgres + Auth)", "Role-based Dashboards", "AI Assistant (Ollama)", "unittest"],
-    architecture: ["React", "FastAPI", "Supabase Auth + Postgres", "Ollama Cloud LLM"],
-    impact: ["4 user roles", "35 tests", "Real organisation"],
-    highlights: [
-      "Conflict detection checks every class date for overlaps and skips only the clashing dates instead of rejecting the series",
-      "Rolling 2-week booking window: ongoing series top themselves up and new students join open group classes",
-      "AI assistant is privacy-scoped: it only sees data the asking user is allowed to see, enforced in the API",
-    ],
-    links: {},
-  },
   {
     slug: "rydzo",
     title: "RydZO",
@@ -117,6 +146,23 @@ export const projects: Project[] = [
       demo: "https://rydzo.vercel.app/",
       video: "https://www.linkedin.com/feed/update/urn:li:activity:7421088557777412096/",
     },
+  },
+  {
+    slug: "mp-police-prep",
+    title: "MP Police Prep 2026",
+    type: "Exam Practice Platform · Solo Full Stack",
+    description:
+      "A free, Hindi-first, mobile-first web app that helps students prepare for the MP Police Constable (GD) exam, used by 50+ learners within weeks of launch. Full mock tests on the real exam pattern with a server-side timer and auto-submit, 200+ official MPESB previous year questions, topic-wise practice, daily challenges and weak-topic reports, plus an admin panel for bulk question import and mock-test building.",
+    image: "/projects/mp-police-prep.png",
+    features: ["React 19 + Vite", "FastAPI (async)", "SQLAlchemy 2", "PostgreSQL + Alembic", "Installable PWA", "pytest · Vitest · Locust"],
+    architecture: ["React PWA", "FastAPI", "PostgreSQL", "Vercel · Render · Supabase"],
+    impact: ["50+ learners", "200+ PYQs", "70+ tests", "₹0/month"],
+    highlights: [
+      "Exam rules enforced in code: a mock can't be published unless it matches the official 40/30/30 section split",
+      "120-minute timer runs on the server, so refreshing or tampering can't buy extra time; tests auto-submit on expiry",
+      "Load-tested with Locust and deployed end-to-end on free tiers",
+    ],
+    links: { demo: "https://mp-police-prep.vercel.app" },
   },
   {
     slug: "mynewhome",
@@ -178,6 +224,14 @@ export function buildKnowledgeBase(): string {
     )
     .join("\n\n");
 
+  const experienceText = experience
+    .map(
+      (r) =>
+        `${r.title}, ${r.company} (${r.location}, ${r.period})${r.summary ? `: ${r.summary}` : ""}\n` +
+        r.work.map((w) => `  ${w.name} (${w.tagline}; ${w.stack.join(", ")}):\n  - ${w.points.join("\n  - ")}`).join("\n")
+    )
+    .join("\n");
+
   return `ABOUT: ${profile.name} is a ${profile.role}, based in ${profile.location}. Umesh works across the stack with Python/FastAPI, Java/Spring Boot and Node/Express on the backend and React/Next.js on the frontend, and ships products with real AI features (LLM tool calling, vision models, privacy-scoped assistants). Solved 235+ LeetCode problems and 500+ coding challenges overall. Contact: ${profile.email}, GitHub ${profile.github}, LinkedIn ${profile.linkedin}.
 
 SKILLS:
@@ -190,9 +244,9 @@ STATUS: ${hrFacts.status}
 WORK STYLE: ${hrFacts.workStyle}
 
 EXPERIENCE:
-- ${hrFacts.experience.join("\n- ")}
+${experienceText}
 
-OPEN SOURCE: OWASP Dependency-Check (PR #8218, #8200: CPE mapping fixes and a new detection hint) and FlowiseAI (node integrations for RAG pipelines).
+OPEN SOURCE: OWASP Dependency-Check, 3 merged PRs (#8218 and #8200: CPE mapping fixes and a detection hint for the Elastic APM Java Agent; #8473: build plugin migration). FlowiseAI: open PR #6406 adding null checks to document store nodes (not merged yet).
 
 NOT PROVIDED (never guess; ask the recruiter to email): salary expectations, notice period, relocation preference, phone number.
 

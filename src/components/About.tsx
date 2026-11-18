@@ -45,7 +45,7 @@ export default function About() {
             className="space-y-6 text-lg text-slate-600 dark:text-slate-300"
           >
             <p>
-              I&apos;m a <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Engineer</strong> who ships complete products, not just features. I&apos;ve built and deployed platforms that real people use: an exam-prep app serving 50+ learners, a coaching platform for a real organisation, and an AI-powered bike rental marketplace.
+              I&apos;m a <strong className="text-slate-900 dark:text-white font-semibold">Full Stack AI Engineer</strong> who ships complete products, not just features. At a stealth-mode AI startup I build backend and LLM features across three products, and on my own I&apos;ve shipped an exam-prep app serving 50+ learners and an AI-powered bike rental marketplace.
             </p>
             <p>
               I work across <strong className="text-slate-900 dark:text-white font-semibold">Python/FastAPI, Java/Spring Boot and Node/Express</strong> on the backend and React on the frontend, and I care about the unglamorous parts too: server-enforced rules, migrations, load tests and 100+ automated tests across my projects.

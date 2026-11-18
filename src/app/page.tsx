@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import OpenSource from "@/components/OpenSource";
 import Projects from "@/components/Projects";
@@ -41,6 +42,7 @@ export default function Home() {
       <Navbar activeSection={activeSection} onNavigate={scrollToSection} />
       <Hero onNavigate={scrollToSection} />
       <About />
+      <Experience />
       <Skills />
       <Projects />
       <OpenSource />
