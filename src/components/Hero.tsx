@@ -81,7 +81,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-2xl md:text-3xl font-medium text-teal-600 dark:text-teal-400 mb-6"
           >
-            Full Stack Engineer · <span className="text-teal-gradient font-semibold">AI-powered products</span>
+            Full Stack AI Engineer · <span className="text-teal-gradient font-semibold">AI-powered products</span>
           </motion.h2>
 
           <motion.div
