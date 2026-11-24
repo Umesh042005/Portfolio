@@ -1,21 +1,11 @@
 @import "tailwindcss";
 
-@theme {
-  --color-teal-500: #14b8a6;
-  --color-teal-400: #2dd4bf;
-  --color-teal-300: #5eead4;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
+/* Orange & black theme: always dark (html has the `dark` class). */
 :root {
-  --background: #F5F5F2; /* Soft off-white instead of pure white/slate */
-  --foreground: #0f172a;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #050505;
+  --foreground: #ededed;
 }
 
 body {
@@ -61,15 +51,15 @@ body {
   background-clip: text;
 }
 
-.text-teal-gradient {
-  background: linear-gradient(135deg, #0d9488 0%, #2dd4bf 100%);
+.text-orange-gradient {
+  background: linear-gradient(135deg, #ea580c 0%, #fbbf24 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.glow-teal {
-  box-shadow: 0 0 40px rgba(45, 212, 191, 0.4);
+.glow-orange {
+  box-shadow: 0 0 40px rgba(249, 115, 22, 0.4);
 }
 
 /* Custom scrollbar */
@@ -114,7 +104,7 @@ section[id] {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(400px circle at var(--x, 50%) var(--y, 50%), rgba(45, 212, 191, 0.12), transparent 45%);
+  background: radial-gradient(400px circle at var(--x, 50%) var(--y, 50%), rgba(249, 115, 22, 0.12), transparent 45%);
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;

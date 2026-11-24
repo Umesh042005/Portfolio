@@ -68,7 +68,7 @@ export default function OpenSource() {
                   
                   <div className="flex-grow">
                     <div className="flex flex-wrap items-center justify-between gap-4 mb-2">
-                      <h4 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                      <h4 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
                         {item.link ? (
                           <a href={item.link} target="_blank" rel="noreferrer" className="hover:underline">
                             {item.project}
@@ -102,7 +102,7 @@ export default function OpenSource() {
             </div>
             
             <div className="mt-10 pt-8 border-t border-slate-200 dark:border-zinc-800 text-center">
-              <a href="https://github.com/Umesh042005" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-teal-600 dark:text-teal-400 font-semibold hover:underline">
+              <a href="https://github.com/Umesh042005" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold hover:underline">
                 View all GitHub Activity <GitPullRequest className="w-4 h-4" />
               </a>
             </div>

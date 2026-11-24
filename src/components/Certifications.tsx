@@ -47,7 +47,7 @@ export default function Certifications() {
 
   return (
     <section id="certifications" className="py-24 relative overflow-hidden">
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-teal-500/5 rounded-full blur-[100px] pointer-events-none z-0" />
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-orange-500/5 rounded-full blur-[100px] pointer-events-none z-0" />
       
       <div className="container mx-auto px-6 relative z-10">
         <SectionHeading 
@@ -66,11 +66,11 @@ export default function Certifications() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glassmorphism p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-xl hover:border-teal-500/30 transition-all group cursor-pointer"
+              className="glassmorphism p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-xl hover:border-orange-500/30 transition-all group cursor-pointer"
             >
               <div className="flex items-center gap-6">
                 <div className="w-14 h-14 rounded-full bg-slate-100 dark:bg-zinc-800 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                  <Award className="w-7 h-7 text-teal-600 dark:text-teal-400" />
+                  <Award className="w-7 h-7 text-orange-600 dark:text-orange-400" />
                 </div>
                 <div>
                   <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-2">{cert.title}</h3>
@@ -84,7 +84,7 @@ export default function Certifications() {
               
               <div className="flex flex-wrap gap-2 md:justify-end w-full md:w-auto mt-4 md:mt-0">
                 {cert.skills.map((skill, i) => (
-                  <span key={i} className="flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 border border-teal-100 dark:border-teal-800/50">
+                  <span key={i} className="flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 border border-orange-100 dark:border-orange-800/50">
                     <CheckCircle className="w-3 h-3" /> {skill}
                   </span>
                 ))}

@@ -135,7 +135,7 @@ export default function CommandPalette({ onNavigate }: { onNavigate: (section: S
                       onMouseMove={() => setActive(i)}
                       onClick={() => runCommand(cmd)}
                       className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-left transition-colors ${
-                        i === active ? "bg-teal-500/10 text-teal-700 dark:text-teal-300" : "text-slate-700 dark:text-slate-300"
+                        i === active ? "bg-orange-500/10 text-orange-700 dark:text-orange-300" : "text-slate-700 dark:text-slate-300"
                       }`}
                     >
                       <span className="text-slate-400">{cmd.icon}</span>

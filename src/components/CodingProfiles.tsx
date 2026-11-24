@@ -50,7 +50,7 @@ export default function CodingProfiles() {
               className="glassmorphism rounded-2xl p-8 border border-slate-200 dark:border-zinc-800 relative group overflow-hidden"
             >
               <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                <ExternalLink className="w-5 h-5 text-teal-500" />
+                <ExternalLink className="w-5 h-5 text-orange-500" />
               </div>
               
               <div className="flex items-center gap-4 mb-8">

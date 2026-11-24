@@ -7,22 +7,22 @@ import { Code2, Database, Brain, Rocket } from "lucide-react";
 export default function About() {
   const cards = [
     {
-      icon: <Code2 className="w-8 h-8 text-teal-500" />,
+      icon: <Code2 className="w-8 h-8 text-orange-500" />,
       title: "End-to-end Ownership",
       description: "Design, backend, frontend, testing and deployment, done solo, for products real people use.",
     },
     {
-      icon: <Database className="w-8 h-8 text-teal-500" />,
+      icon: <Database className="w-8 h-8 text-orange-500" />,
       title: "Backend that Enforces Rules",
       description: "FastAPI and Spring Boot APIs where business rules, privacy and timing live on the server, backed by automated tests.",
     },
     {
-      icon: <Brain className="w-8 h-8 text-teal-500" />,
+      icon: <Brain className="w-8 h-8 text-orange-500" />,
       title: "AI that Does Real Work",
       description: "LLM agents with tool calling, vision models for document and damage checks, and assistants scoped to what each user may see.",
     },
     {
-      icon: <Rocket className="w-8 h-8 text-teal-500" />,
+      icon: <Rocket className="w-8 h-8 text-orange-500" />,
       title: "Open Source Contributor",
       description: "Passionate about contributing to real-world engineering projects and collaborating with the community.",
     },
@@ -51,7 +51,7 @@ export default function About() {
               I work across <strong className="text-slate-900 dark:text-white font-semibold">Python/FastAPI, Java/Spring Boot and Node/Express</strong> on the backend and React on the frontend, and I care about the unglamorous parts too: server-enforced rules, migrations, load tests and 100+ automated tests across my projects.
             </p>
             <p>
-              In the AI era, I treat <strong className="text-teal-600 dark:text-teal-400 font-semibold">LLMs as a building block</strong>: agents that call tools against live data, vision models that verify documents and detect damage, and assistants that respect privacy boundaries. I also build with AI coding tools daily to ship faster without lowering the bar.
+              In the AI era, I treat <strong className="text-orange-600 dark:text-orange-400 font-semibold">LLMs as a building block</strong>: agents that call tools against live data, vision models that verify documents and detect damage, and assistants that respect privacy boundaries. I also build with AI coding tools daily to ship faster without lowering the bar.
             </p>
             <p>
               My foundation is <strong className="text-slate-900 dark:text-white font-semibold">DSA and problem solving</strong> (500+ challenges, 235+ on LeetCode), and I contribute to open source projects like OWASP Dependency-Check and FlowiseAI.

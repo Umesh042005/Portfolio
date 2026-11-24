@@ -54,9 +54,9 @@ export default function Home() {
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p>© {new Date().getFullYear()} Umesh Deshmukh. All rights reserved.</p>
           <p>
-            Built with <span className="text-teal-500 font-semibold">Next.js</span>,{" "}
-            <span className="text-teal-500 font-semibold">Tailwind CSS</span> & an{" "}
-            <span className="text-teal-500 font-semibold">LLM-powered assistant</span> · Press{" "}
+            Built with <span className="text-orange-500 font-semibold">Next.js</span>,{" "}
+            <span className="text-orange-500 font-semibold">Tailwind CSS</span> & an{" "}
+            <span className="text-orange-500 font-semibold">LLM-powered assistant</span> · Press{" "}
             <kbd className="px-1.5 py-0.5 rounded border border-slate-700 text-slate-300 text-xs">Ctrl K</kbd>
           </p>
         </div>

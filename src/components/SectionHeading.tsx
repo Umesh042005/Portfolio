@@ -36,7 +36,7 @@ export default function SectionHeading({ title, subtitle, align = "center" }: Se
         whileInView={{ opacity: 1, scaleX: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.2 }}
-        className={`h-1 bg-teal-500 rounded-full mt-6 ${
+        className={`h-1 bg-orange-500 rounded-full mt-6 ${
           align === "center" ? "w-24 mx-auto" : "w-24"
         }`}
       />

@@ -74,12 +74,12 @@ export default function AskAI() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ delay: 1 }}
             onClick={() => setOpen(true)}
-            className="fixed bottom-5 right-5 z-[60] flex items-center gap-2 pl-4 pr-5 py-3 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-semibold shadow-2xl glow-teal hover:scale-105 transition-transform"
+            className="fixed bottom-5 right-5 z-[60] flex items-center gap-2 pl-4 pr-5 py-3 rounded-full bg-orange-500 text-black hover:bg-orange-400 font-semibold shadow-2xl glow-orange hover:scale-105 transition-transform"
             aria-label="Ask AI about Umesh"
           >
             <span className="relative flex">
-              <Sparkles className="w-5 h-5 text-teal-400 dark:text-teal-600" />
-              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-teal-400 animate-ping" />
+              <Sparkles className="w-5 h-5 text-black" />
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-orange-400 animate-ping" />
             </span>
             Ask AI about me
           </motion.button>
@@ -100,7 +100,7 @@ export default function AskAI() {
           >
             <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200 dark:border-zinc-800">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -126,7 +126,7 @@ export default function AskAI() {
                       <button
                         key={s}
                         onClick={() => ask(s)}
-                        className="text-left text-sm px-4 py-2.5 rounded-xl border border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-slate-300 hover:border-teal-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
+                        className="text-left text-sm px-4 py-2.5 rounded-xl border border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-slate-300 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                       >
                         {s}
                       </button>
@@ -140,7 +140,7 @@ export default function AskAI() {
                   <div
                     className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
                       m.role === "user"
-                        ? "bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-br-md"
+                        ? "bg-orange-500 text-black hover:bg-orange-400 rounded-br-md"
                         : "bg-slate-100 dark:bg-zinc-900 text-slate-800 dark:text-slate-200 rounded-bl-md"
                     }`}
                   >
@@ -169,12 +169,12 @@ export default function AskAI() {
                 onChange={(e) => setInput(e.target.value)}
                 maxLength={500}
                 placeholder="Ask about projects, AI, stack…"
-                className="flex-1 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-zinc-900 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="flex-1 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-zinc-900 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
               />
               <button
                 type="submit"
                 disabled={loading || !input.trim()}
-                className="px-3.5 rounded-xl bg-teal-500 text-white disabled:opacity-40 hover:bg-teal-600 transition-colors"
+                className="px-3.5 rounded-xl bg-orange-500 text-white disabled:opacity-40 hover:bg-orange-600 transition-colors"
                 aria-label="Send"
               >
                 <Send className="w-4 h-4" />

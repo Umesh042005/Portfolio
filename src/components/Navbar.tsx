@@ -41,7 +41,7 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
           onClick={() => onNavigate("home")}
           className="text-2xl font-bold tracking-tighter flex items-center gap-2 group"
         >
-          <div className="w-10 h-10 rounded-xl bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-bold text-xl group-hover:glow-teal transition-all duration-300">
+          <div className="w-10 h-10 rounded-xl bg-orange-500 text-black hover:bg-orange-400 flex items-center justify-center font-bold text-xl group-hover:glow-orange transition-all duration-300">
             UD
           </div>
           <span className="hidden sm:block lg:hidden xl:block whitespace-nowrap text-slate-900 dark:text-white font-medium">Umesh Deshmukh</span>
@@ -56,18 +56,18 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
               className={`relative whitespace-nowrap text-sm font-medium transition-colors ${
                 activeSection === link.key
                   ? "text-slate-900 dark:text-white"
-                  : "text-slate-600 hover:text-teal-500 dark:text-slate-300 dark:hover:text-teal-400"
+                  : "text-slate-600 hover:text-orange-500 dark:text-slate-300 dark:hover:text-orange-400"
               }`}
             >
               {link.name}
               {activeSection === link.key && (
-                <motion.span layoutId="nav-underline" className="absolute -bottom-1.5 left-0 right-0 h-0.5 rounded-full bg-teal-500" />
+                <motion.span layoutId="nav-underline" className="absolute -bottom-1.5 left-0 right-0 h-0.5 rounded-full bg-orange-500" />
               )}
             </button>
           ))}
           <button
             onClick={openCommandPalette}
-            className="flex items-center gap-2 px-3 py-2 rounded-full border border-slate-200 dark:border-zinc-700 text-xs text-slate-500 dark:text-slate-400 hover:border-teal-500 transition-colors"
+            className="flex items-center gap-2 px-3 py-2 rounded-full border border-slate-200 dark:border-zinc-700 text-xs text-slate-500 dark:text-slate-400 hover:border-orange-500 transition-colors"
             aria-label="Open command palette"
           >
             <Search className="w-3.5 h-3.5" />
@@ -77,7 +77,7 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
             href={profile.resume}
             target="_blank"
             rel="noreferrer"
-            className="px-5 py-2.5 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-sm font-medium hover:scale-105 transition-transform duration-300 shadow-lg glow-teal"
+            className="px-5 py-2.5 rounded-full bg-orange-500 text-black hover:bg-orange-400 text-sm font-medium hover:scale-105 transition-transform duration-300 shadow-lg glow-orange"
           >
             Resume
           </a>
@@ -112,7 +112,7 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
                 <button
                   key={link.key}
                   className={`text-left text-base font-medium py-3 border-b border-slate-100 dark:border-white/5 ${
-                    activeSection === link.key ? "text-teal-600 dark:text-teal-400" : "text-slate-700 dark:text-slate-300"
+                    activeSection === link.key ? "text-orange-600 dark:text-orange-400" : "text-slate-700 dark:text-slate-300"
                   }`}
                   onClick={() => {
                     onNavigate(link.key);
@@ -122,7 +122,7 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
                   {link.name}
                 </button>
               ))}
-              <a href={profile.resume} target="_blank" rel="noreferrer" className="mt-3 text-center px-5 py-3 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-medium">
+              <a href={profile.resume} target="_blank" rel="noreferrer" className="mt-3 text-center px-5 py-3 rounded-full bg-orange-500 text-black hover:bg-orange-400 font-medium">
                 Resume
               </a>
             </div>
