@@ -9,7 +9,7 @@ import { openAskAI } from "./AskAI";
 
 type Command = { id: string; label: string; group: string; icon: ReactNode; run: () => void };
 
-export default function CommandPalette({ onNavigate }: { onNavigate: (section: SectionKey) => void }) {
+export default function CommandPalette({ onNavigate }: { onNavigate: (section: SectionKey, anchorId?: string) => void }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
@@ -26,7 +26,7 @@ export default function CommandPalette({ onNavigate }: { onNavigate: (section: S
         label: `${p.title} — ${p.type.split(" · ")[0]}`,
         group: "Projects",
         icon: <FolderGit2 className="w-4 h-4" />,
-        run: () => document.getElementById(`project-${p.slug}`)?.scrollIntoView({ behavior: "smooth", block: "start" }),
+        run: () => onNavigate("projects", `project-${p.slug}`),
       })),
       ...sections.map((s) => ({ id: `s-${s.key}`, label: s.name, group: "Sections", icon: <Hash className="w-4 h-4" />, run: () => onNavigate(s.key) })),
       { id: "github", label: "GitHub profile", group: "Links", icon: <FaGithub className="w-4 h-4" />, run: openUrl(profile.github) },
