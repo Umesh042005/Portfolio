@@ -8,7 +8,7 @@ import { experience } from "@/data/portfolio";
 export default function Experience() {
   return (
     <section id="experience" className="py-24 relative">
-      <div className="container mx-auto px-6">
+      <div className="mx-auto w-full max-w-5xl px-6">
         <SectionHeading
           title="Experience"
           subtitle="Where I've been shipping backend and AI features for real products."

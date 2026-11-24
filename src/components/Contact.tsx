@@ -9,7 +9,7 @@ export default function Contact() {
     <section id="contact" className="py-24 relative bg-slate-900 dark:bg-black text-white overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-orange-900/40 via-slate-900/0 to-transparent pointer-events-none" />
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="mx-auto w-full max-w-5xl px-6 relative z-10">
         <SectionHeading 
           title="Let's Connect" 
           subtitle="Interested in working together or just want to say hi? Drop a message." 

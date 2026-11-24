@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Mail, Sparkles } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { SiLeetcode } from "react-icons/si";
 import { profile, type SectionKey } from "@/data/portfolio";
 import { openAskAI } from "./AskAI";
 
@@ -33,7 +34,7 @@ export default function Hero({ onNavigate }: HeroProps) {
         />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="mx-auto w-full max-w-5xl px-6 relative z-10">
         <div className="flex flex-col items-center text-center">
           
           {/* Portrait Container */}
@@ -150,11 +151,14 @@ export default function Hero({ onNavigate }: HeroProps) {
              transition={{ duration: 0.8, delay: 0.8 }}
              className="mt-12 flex items-center gap-6"
           >
-            <a href={profile.github} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+            <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
               <FaGithub className="w-6 h-6" />
             </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
               <FaLinkedin className="w-6 h-6" />
+            </a>
+            <a href={profile.leetcode} target="_blank" rel="noreferrer" aria-label="LeetCode" className="text-slate-400 hover:text-[#FFA116] transition-colors">
+              <SiLeetcode className="w-6 h-6" />
             </a>
             <a href={`mailto:${profile.email}`} aria-label="Email" className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
               <Mail className="w-6 h-6" />

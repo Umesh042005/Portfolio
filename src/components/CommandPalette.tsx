@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Hash, FolderGit2, Sparkles, FileText, Mail, CornerDownLeft } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { SiLeetcode } from "react-icons/si";
 import { profile, projects, sections, type SectionKey } from "@/data/portfolio";
 import { openAskAI } from "./AskAI";
 
@@ -31,6 +32,7 @@ export default function CommandPalette({ onNavigate }: { onNavigate: (section: S
       ...sections.map((s) => ({ id: `s-${s.key}`, label: s.name, group: "Sections", icon: <Hash className="w-4 h-4" />, run: () => onNavigate(s.key) })),
       { id: "github", label: "GitHub profile", group: "Links", icon: <FaGithub className="w-4 h-4" />, run: openUrl(profile.github) },
       { id: "linkedin", label: "LinkedIn profile", group: "Links", icon: <FaLinkedin className="w-4 h-4" />, run: openUrl(profile.linkedin) },
+      { id: "leetcode", label: "LeetCode profile", group: "Links", icon: <SiLeetcode className="w-4 h-4" />, run: openUrl(profile.leetcode) },
     ];
   }, [onNavigate]);
 

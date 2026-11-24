@@ -49,7 +49,7 @@ export default function Certifications() {
     <section id="certifications" className="py-24 relative overflow-hidden">
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-orange-500/5 rounded-full blur-[100px] pointer-events-none z-0" />
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="mx-auto w-full max-w-5xl px-6 relative z-10">
         <SectionHeading 
           title="Certifications" 
           subtitle="Continuous learning and professional recognition." 

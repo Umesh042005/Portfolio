@@ -28,7 +28,7 @@ export default function OpenSource() {
 
   return (
     <section id="opensource" className="py-24 relative bg-slate-100 dark:bg-zinc-900/50">
-      <div className="container mx-auto px-6">
+      <div className="mx-auto w-full max-w-5xl px-6">
         <SectionHeading 
           title="Open Source" 
           subtitle="Giving back to the community and building alongside global engineering teams." 

@@ -30,7 +30,7 @@ export default function About() {
 
   return (
     <section id="about" className="py-24 relative">
-      <div className="container mx-auto px-6">
+      <div className="mx-auto w-full max-w-5xl px-6">
         <SectionHeading 
           title="About Me" 
           subtitle="I build things people use, and I use AI to build them better." 

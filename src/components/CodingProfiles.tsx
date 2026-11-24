@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
-import { ExternalLink, Code } from "lucide-react";
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { ExternalLink } from "lucide-react";
+import { SiGeeksforgeeks, SiLeetcode } from "react-icons/si";
 
 export default function CodingProfiles() {
   const profiles = [
@@ -15,7 +15,7 @@ export default function CodingProfiles() {
         { label: "Problems Solved", value: "235+" },
        
       ],
-      icon: <Code className="w-8 h-8 text-yellow-500" />
+      icon: <SiLeetcode className="w-8 h-8 text-[#FFA116]" />
     },
     {
       platform: "GeeksforGeeks",
@@ -25,7 +25,7 @@ export default function CodingProfiles() {
         { label: "Problems Solved", value: "35+" },
        
       ],
-      icon: <Code className="w-8 h-8 text-yellow-500" />
+      icon: <SiGeeksforgeeks className="w-8 h-8 text-[#2F8D46]" />
     }
    
   
@@ -33,7 +33,7 @@ export default function CodingProfiles() {
 
   return (
     <section id="codingprofiles" className="py-24 relative bg-slate-50 dark:bg-zinc-950">
-      <div className="container mx-auto px-6">
+      <div className="mx-auto w-full max-w-5xl px-6">
         <SectionHeading 
           title="Coding Profiles" 
           subtitle="Consistency, problem-solving, and community engagement." 

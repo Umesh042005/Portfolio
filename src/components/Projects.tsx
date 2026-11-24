@@ -143,7 +143,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 export default function Projects() {
   return (
     <section id="projects" className="py-24 relative">
-      <div className="container mx-auto px-6">
+      <div className="mx-auto w-full max-w-5xl px-6">
         <SectionHeading
           title="Featured Projects"
           subtitle="Shipped products with real users, real constraints and AI where it actually helps."

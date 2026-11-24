@@ -9,7 +9,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="py-24 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="mx-auto w-full max-w-5xl px-6 relative z-10">
         <SectionHeading 
           title="Technical Arsenal" 
           subtitle="Every skill here is backed by a shipped project, not just a course." 
