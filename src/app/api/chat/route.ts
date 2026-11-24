@@ -181,22 +181,28 @@ export async function POST(req: Request) {
   let reason = apiKey ? "llm-empty" : "no-key";
   if (apiKey) {
     try {
-      const res = await fetch(process.env.AI_API_URL ?? "https://ollama.com/api/chat", {
+      const url = process.env.AI_API_URL ?? "https://ollama.com/api/chat";
+      // Ollama's native API vs OpenAI-compatible APIs (Groq, OpenRouter, OpenAI...): request and
+      // response shapes differ, and OpenAI-style APIs may reject Ollama's `options` field.
+      const isOllama = url.includes("/api/chat");
+      const chat = [{ role: "system", content: SYSTEM_PROMPT }, ...messages, { role: "system", content: replyHint(question) }];
+      // gpt-oss-120b sticks to the facts far better than 20b for recruiter-facing answers.
+      const model = process.env.AI_MODEL ?? (isOllama ? "gpt-oss:120b" : "openai/gpt-oss-120b");
+      const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
-        body: JSON.stringify({
-          // 120b sticks to the facts far better than 20b for recruiter-facing answers.
-          model: process.env.AI_MODEL ?? "gpt-oss:120b",
-          stream: false,
-          options: { temperature: 0.2 },
-          messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages, { role: "system", content: replyHint(question) }],
-        }),
+        body: JSON.stringify(
+          isOllama
+            ? { model, stream: false, options: { temperature: 0.2 }, messages: chat }
+            : { model, temperature: 0.2, max_tokens: 1024, messages: chat }
+        ),
         signal: AbortSignal.timeout(50_000),
       });
       if (res.ok) {
         const data = await res.json();
+        const content: string | undefined = isOllama ? data?.message?.content : data?.choices?.[0]?.message?.content;
         // The widget renders plain text, so strip any markdown emphasis the model slips in.
-        const answer: string | undefined = data?.message?.content?.replace(/\*\*|__/g, "").trim();
+        const answer = content?.replace(/\*\*|__/g, "").trim();
         if (answer) return NextResponse.json({ answer, mode: "llm" });
       } else {
         reason = `llm-http-${res.status}`;
