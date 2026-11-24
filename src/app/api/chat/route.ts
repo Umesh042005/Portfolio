@@ -207,8 +207,15 @@ export async function POST(req: Request) {
         const answer = content?.replace(/\*\*|__/g, "").trim();
         if (answer) return NextResponse.json({ answer, mode: "llm" });
       } else {
-        reason = `llm-http-${res.status}`;
-        console.error("LLM error", res.status, await res.text());
+        const body = await res.text();
+        // Provider error code (e.g. "model_not_found") plus host and model name: enough to fix
+        // a misconfigured deploy, without exposing the key or the request.
+        let code = "";
+        try {
+          code = JSON.parse(body)?.error?.code ?? "";
+        } catch {}
+        reason = `llm-http-${res.status}${code ? `-${code}` : ""} (${new URL(url).host}, model ${model})`;
+        console.error("LLM error", res.status, body);
       }
     } catch (err) {
       reason = err instanceof Error && err.name === "TimeoutError" ? "llm-timeout" : "llm-network";
