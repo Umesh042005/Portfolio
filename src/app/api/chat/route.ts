@@ -181,10 +181,12 @@ export async function POST(req: Request) {
   let reason = apiKey ? "llm-empty" : "no-key";
   if (apiKey) {
     try {
-      const url = process.env.AI_API_URL ?? "https://ollama.com/api/chat";
+      const baseUrl = (process.env.AI_API_URL ?? "https://ollama.com/api/chat").trim().replace(/\/+$/, "");
       // Ollama's native API vs OpenAI-compatible APIs (Groq, OpenRouter, OpenAI...): request and
       // response shapes differ, and OpenAI-style APIs may reject Ollama's `options` field.
-      const isOllama = url.includes("/api/chat");
+      const isOllama = baseUrl.includes("/api/chat");
+      // Providers show a base URL like https://api.groq.com/openai/v1; accept it as-is.
+      const url = isOllama || baseUrl.endsWith("/chat/completions") ? baseUrl : `${baseUrl}/chat/completions`;
       const chat = [{ role: "system", content: SYSTEM_PROMPT }, ...messages, { role: "system", content: replyHint(question) }];
       // gpt-oss-120b sticks to the facts far better than 20b for recruiter-facing answers.
       const model = process.env.AI_MODEL ?? (isOllama ? "gpt-oss:120b" : "openai/gpt-oss-120b");
