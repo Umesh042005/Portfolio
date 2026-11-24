@@ -43,14 +43,14 @@ export default function Hero({ onNavigate }: HeroProps) {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative mb-10 w-[90%] max-w-[500px] mx-auto drop-shadow-2xl"
           >
-            {/* The user's provided image already has the beautiful arch and graphical effects, so we just display it natively without masking it into a circle. */}
+            {/* Plain portrait on the page's black background (graphics removed from the original umesh_image.png). */}
             <Image
-              src="/umesh_image.png"
+              src="/umesh_image_dark.png"
               alt="Umesh Deshmukh"
               width={320}
               height={480}
               priority
-              className="w-full h-auto object-contain rounded-circle rounded-full"
+              className="w-full h-auto object-contain [mask-image:radial-gradient(ellipse_75%_70%_at_50%_45%,#000_70%,transparent_100%)]"
             />
             
             {/* Small floating badge */}
